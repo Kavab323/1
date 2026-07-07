@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Панель управления — ЗаписьPro</title>
+    <link rel="stylesheet" href="css/partner.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+
+    <!-- ===== ШАПКА ===== -->
+    <header class="partner-header">
+        <div class="partner-header-left">
+            <span class="partner-header-logo">📊</span>
+            <span class="partner-header-title">Панель управления</span>
+        </div>
+        <div class="partner-header-right">
+            <span class="partner-biz-name" id="dashBizName">Бизнес</span>
+            <span class="partner-biz-code" id="dashBizCode">Код: 12345</span>
+            <button class="btn-exit" id="dashExitBtn">🚪 Выйти</button>
+        </div>
+    </header>
+
+    <!-- ===== КОНТЕНТ ===== -->
+    <div class="dashboard-container">
+
+        <!-- Статистика -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="statServices">0</div>
+                <div class="stat-label">Услуг</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statMasters">0</div>
+                <div class="stat-label">Мастеров</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statBookings">0</div>
+                <div class="stat-label">Записей</div>
+            </div>
+        </div>
+
+        <!-- Табы -->
+        <div class="dashboard-tabs">
+            <button class="tab-btn active" data-tab="services">💇 Услуги</button>
+            <button class="tab-btn" data-tab="masters">👨‍💼 Мастера</button>
+            <button class="tab-btn" data-tab="bookings">📋 Записи</button>
+            <button class="tab-btn" data-tab="settings">⚙️ Настройки</button>
+        </div>
+
+        <!-- ===== ТАБ: УСЛУГИ ===== -->
+        <div class="tab-content active" id="tab-services">
+            <div class="tab-header">
+                <h3>Список услуг</h3>
+                <button class="btn-add" id="addServiceBtn">+ Новая услуга</button>
+            </div>
+            <div class="service-editor" id="serviceEditor">
+                <div class="service-editor-header">
+                    <div>
+                        <h4 id="serviceEditorTitle">Редактор услуги</h4>
+                        <div class="service-editor-hint" id="serviceEditorHint">Создайте новую услугу или выберите существующую для редактирования</div>
+                    </div>
+                </div>
+                <div class="service-editor-grid">
+                    <div class="form-group">
+                        <label>Название услуги</label>
+                        <input type="text" id="serviceNameInput" placeholder="Например: Мужская стрижка">
+                    </div>
+                    <div class="service-editor-row">
+                        <div class="form-group">
+                            <label>Цена, ₽</label>
+                            <input type="number" id="servicePriceInput" min="0" placeholder="1500">
+                        </div>
+                        <div class="form-group">
+                            <label>Длительность, мин</label>
+                            <input type="number" id="serviceDurationInput" min="5" step="5" placeholder="30">
+                        </div>
+                    </div>
+                </div>
+                <div class="service-editor-actions">
+                    <button class="btn-primary" id="saveServiceBtn">💾 Сохранить услугу</button>
+                    <button class="btn-secondary" id="cancelServiceBtn">Сбросить</button>
+                </div>
+            </div>
+            <div id="servicesList"></div>
+        </div>
+
+        <!-- ===== ТАБ: МАСТЕРА ===== -->
+        <div class="tab-content" id="tab-masters">
+            <div class="tab-header">
+                <h3>Список мастеров</h3>
+                <button class="btn-add" id="addMasterBtn">+ Новый мастер</button>
+            </div>
+            <div class="master-editor" id="masterEditor">
+                <div class="master-editor-header">
+                    <div>
+                        <h4 id="masterEditorTitle">Редактор мастера</h4>
+                        <div class="master-editor-hint" id="masterEditorHint">Добавьте фото, имя и профиль мастера</div>
+                    </div>
+                    <div class="master-editor-preview" id="masterEditorPreview">👤</div>
+                </div>
+                <div class="master-editor-grid">
+                    <div class="form-group">
+                        <label>Имя мастера</label>
+                        <input type="text" id="masterNameInput" placeholder="Например: Анна">
+                    </div>
+                    <div class="form-group">
+                        <label>Профиль / описание</label>
+                        <textarea id="masterBioInput" rows="3" placeholder="Коротко о мастере, опыте и специализации"></textarea>
+                    </div>
+                    <div class="master-editor-row">
+                        <div class="form-group">
+                            <label>Эмодзи</label>
+                            <input type="text" id="masterEmojiInput" maxlength="4" placeholder="👩">
+                        </div>
+                        <div class="form-group">
+                            <label>Фото</label>
+                            <input type="file" id="masterPhotoInput" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="master-photo-url-row">
+                        <div class="form-group">
+                            <label>Или ссылка на фото</label>
+                            <input type="url" id="masterPhotoUrlInput" placeholder="https://...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Услуги мастера</label>
+                        <div id="masterServicesPicker" class="master-services-picker"></div>
+                    </div>
+                    <div class="master-editor-row">
+                        <div class="form-group">
+                            <label>Начало смены</label>
+                            <input type="time" id="masterWorkStartInput" value="09:00">
+                        </div>
+                        <div class="form-group">
+                            <label>Окончание смены</label>
+                            <input type="time" id="masterWorkEndInput" value="21:00">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Рабочие дни мастера</label>
+                        <div class="workdays-grid">
+                            <label><input type="checkbox" value="1" class="master-workday"> Пн</label>
+                            <label><input type="checkbox" value="2" class="master-workday"> Вт</label>
+                            <label><input type="checkbox" value="3" class="master-workday"> Ср</label>
+                            <label><input type="checkbox" value="4" class="master-workday"> Чт</label>
+                            <label><input type="checkbox" value="5" class="master-workday"> Пт</label>
+                            <label><input type="checkbox" value="6" class="master-workday"> Сб</label>
+                            <label><input type="checkbox" value="0" class="master-workday"> Вс</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="master-editor-actions">
+                    <button class="btn-primary" id="saveMasterBtn">💾 Сохранить мастера</button>
+                    <button class="btn-secondary" id="cancelMasterBtn">Сбросить</button>
+                </div>
+            </div>
+            <div id="mastersList"></div>
+        </div>
+
+        <!-- ===== ТАБ: ЗАПИСИ ===== -->
+        <div class="tab-content" id="tab-bookings">
+            <h3>Все записи</h3>
+            <div id="bookingsList" class="bookings-list-empty">
+                Записей пока нет
+            </div>
+        </div>
+
+        <!-- ===== ТАБ: НАСТРОЙКИ ===== -->
+        <div class="tab-content" id="tab-settings">
+            <h3>Настройки бизнеса</h3>
+            <div class="settings-form">
+                <div class="form-group">
+                    <label>Название</label>
+                    <input type="text" id="settingName">
+                </div>
+                <div class="form-group">
+                    <label>Адрес</label>
+                    <input type="text" id="settingAddress">
+                </div>
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input type="text" id="settingPhone">
+                </div>
+                <div class="master-editor-row">
+                    <div class="form-group">
+                        <label>Начало смены менеджера</label>
+                        <input type="time" id="managerWorkStartInput" value="09:00">
+                    </div>
+                    <div class="form-group">
+                        <label>Окончание смены менеджера</label>
+                        <input type="time" id="managerWorkEndInput" value="21:00">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Рабочие дни менеджера</label>
+                    <div class="workdays-grid">
+                        <label><input type="checkbox" value="1" class="manager-workday"> Пн</label>
+                        <label><input type="checkbox" value="2" class="manager-workday"> Вт</label>
+                        <label><input type="checkbox" value="3" class="manager-workday"> Ср</label>
+                        <label><input type="checkbox" value="4" class="manager-workday"> Чт</label>
+                        <label><input type="checkbox" value="5" class="manager-workday"> Пт</label>
+                        <label><input type="checkbox" value="6" class="manager-workday"> Сб</label>
+                        <label><input type="checkbox" value="0" class="manager-workday"> Вс</label>
+                    </div>
+                </div>
+                <button class="btn-primary" id="saveSettingsBtn">💾 Сохранить</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../js/data.js"></script>
+    <script src="js/partner.js"></script>
+</body>
+</html>

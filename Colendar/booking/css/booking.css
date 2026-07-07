@@ -1,0 +1,246 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+
+body {
+    background: #FFFFFF;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    max-width: 700px;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid rgba(15, 52, 96, 0.08);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(15, 52, 96, 0.08);
+}
+
+h1 { font-size: 28px; color: #1A1A2E; margin-bottom: 5px; }
+.subtitle { color: #4A4A6A; margin-bottom: 25px; }
+
+.step.hidden { display: none; }
+
+h2 { font-size: 18px; color: #1A1A2E; margin-bottom: 15px; }
+
+/* Шаг 1: Услуги */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.service-card {
+    padding: 15px 10px;
+    border: 2px solid rgba(15, 52, 96, 0.12);
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+    background: #FFFFFF;
+}
+
+.service-card:hover { border-color: #E2B859; background: #F8F9FA; }
+.service-card.selected { border-color: #0F3460; background: rgba(15, 52, 96, 0.06); }
+.service-card .price { font-size: 12px; color: #E2B859; font-weight: 600; display: block; margin-top: 4px; }
+.service-card .duration { font-size: 11px; color: #4A4A6A; }
+
+/* Шаг 2: Мастера */
+.master-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.master-card {
+    padding: 12px;
+    border: 2px solid rgba(15, 52, 96, 0.12);
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+    background: #FFFFFF;
+}
+
+.master-card:hover { border-color: #E2B859; background: #F8F9FA; }
+.master-card.selected { border-color: #0F3460; background: rgba(15, 52, 96, 0.06); }
+.master-card .emoji { font-size: 28px; display: block; margin-bottom: 4px; }
+
+/* Выбор даты */
+.date-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    background: #F8F9FA;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(15, 52, 96, 0.08);
+}
+
+.date-selector button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 10px;
+    color: #1A1A2E;
+}
+
+.date-selector button:hover { color: #E2B859; }
+.date-selector span { font-weight: 600; font-size: 16px; }
+
+/* Время */
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.time-slot {
+    padding: 10px 5px;
+    border: 2px solid rgba(15, 52, 96, 0.12);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+    background: #FFFFFF;
+}
+
+.time-slot:hover:not(.disabled) { border-color: #E2B859; background: #F8F9FA; }
+.time-slot.selected { border-color: #0F3460; background: rgba(15, 52, 96, 0.06); }
+.time-slot.disabled { background: #F8F9FA; color: #4A4A6A; cursor: not-allowed; }
+.time-slot.booked { background: #fff0f0; border-color: rgba(216, 92, 83, 0.3); color: #d85c53; cursor: not-allowed; }
+
+/* Форма */
+#bookingForm input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid rgba(15, 52, 96, 0.12);
+    border-radius: 10px;
+    font-size: 15px;
+    margin-bottom: 12px;
+    transition: 0.3s;
+    background: #FFFFFF;
+}
+
+#bookingForm input:focus {
+    outline: none;
+    border-color: #E2B859;
+}
+
+.booking-summary {
+    background: #F8F9FA;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.8;
+    border: 1px solid rgba(15, 52, 96, 0.08);
+}
+
+.booking-summary strong { color: #1A1A2E; }
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* Кнопки */
+.btn-primary, .btn-success, .btn-secondary {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary { background: #0F3460; color: white; }
+.btn-primary:hover { background: #0a2647; transform: translateY(-1px); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-success { background: #0F3460; color: white; }
+.btn-success:hover { background: #0a2647; }
+
+.btn-secondary { background: #F8F9FA; color: #1A1A2E; border: 1px solid rgba(15, 52, 96, 0.12); }
+.btn-secondary:hover { background: #eef2ff; }
+
+/* Успех */
+.success-icon { font-size: 64px; text-align: center; margin-bottom: 15px; }
+#stepSuccess h2 { text-align: center; }
+#stepSuccess p { text-align: center; color: #4A4A6A; margin-bottom: 20px; }
+
+#stepSuccess .btn-primary,
+#stepSuccess .btn-secondary {
+    display: inline-block;
+    margin: 5px;
+}
+
+/* Модалка моих записей */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 52, 96, 0.45);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal:not(.hidden) { display: flex; }
+
+.modal-content {
+    background: #FFFFFF;
+    padding: 30px;
+    border: 1px solid rgba(15, 52, 96, 0.08);
+    border-radius: 16px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 16px 40px rgba(15, 52, 96, 0.12);
+}
+
+.modal-content .booking-item {
+    padding: 12px;
+    border-bottom: 1px solid rgba(15, 52, 96, 0.08);
+    font-size: 14px;
+}
+
+.modal-content .booking-item:last-child { border-bottom: none; }
+.modal-content .booking-item .delete-booking {
+    color: #E2B859;
+    cursor: pointer;
+    float: right;
+    font-weight: 600;
+}
+
+.modal-content .booking-item .delete-booking:hover { color: #d85c53; }
+
+/* Адаптив */
+@media (max-width: 480px) {
+    .app-container { padding: 20px; }
+    .service-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+    .master-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+    .time-grid { grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); }
+    .form-actions { flex-direction: column; }
+    .form-actions button { width: 100%; }
+    h1 { font-size: 22px; }
+}

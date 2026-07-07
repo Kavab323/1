@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Для партнеров — ЗаписьPro</title>
+    <link rel="stylesheet" href="css/partner.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+
+    <div class="partner-container">
+        <a href="../index.html" class="back-link">← На главную</a>
+
+        <div class="partner-card">
+            <div class="partner-logo">👤</div>
+            <h1>Для партнеров</h1>
+            <p class="subtitle">Войдите в аккаунт или зарегистрируйте бизнес</p>
+
+            <div class="error-message" id="partnerError">Неверный код или пароль</div>
+
+            <!-- ===== ВХОД ===== -->
+            <div id="partnerLoginForm">
+                <div class="form-group">
+                    <label>🔑 Код бизнеса (логин)</label>
+                    <input type="text" id="partnerLogin" placeholder="Например: 12345">
+                </div>
+                <div class="form-group">
+                    <label>🔒 Пароль</label>
+                    <input type="password" id="partnerPassword" placeholder="Введите пароль">
+                </div>
+                <button class="btn-primary" id="partnerLoginBtn">Войти</button>
+            </div>
+
+            <div class="switch-link">
+                Нет бизнеса? <a href="#" id="partnerShowRegister">Зарегистрировать</a>
+            </div>
+
+            <!-- ===== РЕГИСТРАЦИЯ ===== -->
+            <div class="register-section" id="partnerRegisterSection">
+                <h2>📝 Регистрация бизнеса</h2>
+                <p class="subtitle">Заполните все поля</p>
+
+                <div class="form-group">
+                    <label>Название организации *</label>
+                    <input type="text" id="regBizName" placeholder="Например: Р.Стиль">
+                </div>
+                <div class="form-group">
+                    <label>Код бизнеса (логин) *</label>
+                    <input type="text" id="regBizCode" placeholder="Придумайте код, например 12345">
+                    <div class="hint">Только цифры, 5-10 символов</div>
+                </div>
+                <div class="form-group">
+                    <label>Пароль *</label>
+                    <input type="password" id="regBizPassword" placeholder="Придумайте пароль">
+                    <div class="hint">Минимум 6 символов</div>
+                </div>
+                <div class="form-group">
+                    <label>Адрес *</label>
+                    <input type="text" id="regBizAddress" placeholder="ул. Примерная, 1, Город">
+                </div>
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input type="text" id="regBizPhone" placeholder="+7 (999) 123-45-67">
+                </div>
+                <div class="form-group">
+                    <label>Услуги (каждая с новой строки)</label>
+                    <textarea id="regBizServices" rows="4" placeholder="Мужская стрижка | 1500 | 30&#10;Женская стрижка | 2500 | 60&#10;Окрашивание | 4000 | 120"></textarea>
+                    <div class="hint">Формат: Название | Цена | Длительность (мин)</div>
+                </div>
+                <div class="form-group">
+                    <label>Мастера (через запятую)</label>
+                    <input type="text" id="regBizMasters" placeholder="Анна, Дмитрий, Елена">
+                </div>
+
+                <button class="btn-success" id="partnerRegisterBtn">✅ Зарегистрировать бизнес</button>
+                <button class="btn-secondary" id="partnerRegisterCancel">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/data.js"></script>
+    <script src="js/partner.js"></script>
+</body>
+</html>

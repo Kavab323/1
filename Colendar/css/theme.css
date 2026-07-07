@@ -1,0 +1,458 @@
+/* Unified visual theme: clean, vibrant, high-contrast */
+:root {
+    --theme-bg: #FFFFFF;
+    --theme-surface: #ffffff;
+    --theme-surface-soft: #F8F9FA;
+    --theme-line: rgba(15, 52, 96, 0.10);
+    --theme-text: #1A1A2E;
+    --theme-muted: #4A4A6A;
+    --theme-primary: #0F3460;
+    --theme-primary-2: #1a4d8c;
+    --theme-accent: #E2B859;
+    --theme-accent-2: #f3d78e;
+    --theme-success: #2f9e68;
+    --theme-danger: #d85c53;
+    --theme-shadow: 0 12px 30px rgba(15, 52, 96, 0.08);
+    --theme-shadow-strong: 0 18px 40px rgba(15, 52, 96, 0.10);
+}
+
+html,
+body {
+    background: var(--theme-bg) !important;
+    color: var(--theme-text) !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body::before,
+body::after,
+body > *::before,
+body > *::after {
+    filter: none !important;
+    opacity: 0.05 !important;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.header,
+.partner-header,
+.search-section,
+.business-card,
+.bottom-nav,
+.modal-content,
+.auth-modal .modal-content,
+.partner-card,
+.dashboard-tabs,
+.tab-content,
+.stat-card,
+.service-editor,
+.master-editor,
+.booking-summary,
+.calendar-card,
+.selected-master-card,
+.business-info,
+.service-item,
+.master-item,
+.time-slot,
+.calendar-day,
+.settings-form,
+.empty-state,
+.no-results,
+.empty-state-card,
+.auth-tabs,
+.master-profile-card,
+.bookings-list-empty {
+    background: var(--theme-surface) !important;
+    border-color: var(--theme-line) !important;
+    box-shadow: var(--theme-shadow) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-image: none !important;
+}
+
+.search-section,
+.partner-card,
+.service-editor,
+.master-editor,
+.calendar-card,
+.selected-master-card,
+.booking-summary,
+.tab-content,
+.stat-card,
+.business-card,
+.business-info,
+.service-item,
+.master-item,
+.time-slot,
+.calendar-day,
+.modal-content,
+.auth-modal .modal-content,
+.settings-form,
+.bottom-nav,
+.empty-state,
+.no-results,
+.empty-state-card,
+.master-profile-card {
+    border: 1px solid var(--theme-line) !important;
+}
+
+.header,
+.partner-header,
+.bottom-nav,
+.dashboard-tabs,
+.auth-tabs {
+    background: #ffffff !important;
+}
+
+.header,
+.partner-header {
+    box-shadow: var(--theme-shadow) !important;
+}
+
+.logo,
+.logo span,
+.partner-logo,
+.partner-card h1,
+.search-section h1,
+.modal-header h2,
+.modal h3,
+.partner-card h1,
+.tab-content h3,
+.service-editor-header h4,
+.master-editor-header h4,
+.selected-master-name,
+.calendar-title .month,
+#stepSuccess h2,
+#stepForm h2,
+#stepMaster h2,
+#stepService h2 {
+    color: var(--theme-text) !important;
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+.logo span,
+.partner-logo {
+    color: var(--theme-primary) !important;
+}
+
+.search-section p,
+.partner-card .subtitle,
+.search-hint,
+.results-count,
+.business-card .info .address,
+.business-card .info .code,
+.business-info .address,
+.business-info .phone,
+.business-info .code-tag,
+.calendar-title .hint,
+.selected-master-bio,
+.selected-master-meta,
+.calendar-day .day-note,
+.stat-label,
+.service-editor-hint,
+.master-editor-hint,
+.booking-summary,
+#stepSuccess p,
+.form-group .hint,
+.booking-item .detail,
+.bookings-list-empty,
+.empty-state,
+.no-results,
+.empty-state-card {
+    color: var(--theme-muted) !important;
+}
+
+.search-box input,
+.form-group input,
+.form-group textarea,
+#bookingForm input,
+.auth-form .form-group input,
+.settings-form .form-group input {
+    background: #ffffff !important;
+    color: var(--theme-text) !important;
+    border: 1px solid var(--theme-line) !important;
+    box-shadow: none !important;
+}
+
+button,
+.search-box button,
+.btn-primary,
+.btn-success,
+.btn-book,
+.btn-auth,
+.btn-secondary,
+.btn-auth-secondary,
+.tab-btn,
+.bottom-nav a,
+.calendar-header button {
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease, filter 0.18s ease !important;
+    font-weight: 600;
+}
+
+.search-box button:hover,
+.btn-primary:hover,
+.btn-success:hover,
+.btn-book:hover,
+.btn-auth:hover,
+.tab-btn.active:hover,
+.bottom-nav a.active:hover,
+.calendar-header button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+}
+
+.search-box button:active,
+.btn-primary:active,
+.btn-success:active,
+.btn-book:active,
+.btn-auth:active,
+.btn-secondary:active,
+.btn-auth-secondary:active,
+.tab-btn:active,
+.bottom-nav a:active,
+.calendar-header button:active {
+    transform: translateY(0) scale(0.99);
+    filter: brightness(0.98);
+}
+
+.search-box button:focus-visible,
+.btn-primary:focus-visible,
+.btn-success:focus-visible,
+.btn-book:focus-visible,
+.btn-auth:focus-visible,
+.btn-secondary:focus-visible,
+.btn-auth-secondary:focus-visible,
+.tab-btn:focus-visible,
+.bottom-nav a:focus-visible,
+.calendar-header button:focus-visible {
+    outline: 2px solid rgba(226, 184, 89, 0.35) !important;
+    outline-offset: 2px;
+}
+
+.search-box input:focus,
+.form-group input:focus,
+.form-group textarea:focus,
+#bookingForm input:focus,
+.auth-form .form-group input:focus,
+.settings-form .form-group input:focus {
+    border-color: rgba(226, 184, 89, 0.45) !important;
+    box-shadow: 0 0 0 4px rgba(226, 184, 89, 0.1) !important;
+    outline: none !important;
+}
+
+.search-box button,
+.btn-primary,
+.btn-success,
+.btn-book,
+.btn-auth,
+.tab-btn.active,
+.bottom-nav a.active {
+    background: var(--theme-primary) !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+.tab-btn {
+    color: var(--theme-muted) !important;
+}
+
+.tab-btn.active,
+.bottom-nav a.active {
+    color: #ffffff !important;
+}
+
+.btn-secondary,
+.btn-auth-secondary {
+    background: #ffffff !important;
+    color: var(--theme-text) !important;
+    border: 1px solid var(--theme-line) !important;
+}
+
+.btn-secondary:hover,
+.btn-auth-secondary:hover,
+.calendar-header button:hover {
+    background: var(--theme-surface-soft) !important;
+    color: var(--theme-text) !important;
+}
+
+.search-box button:disabled,
+.btn-primary:disabled,
+.btn-success:disabled,
+.btn-book:disabled,
+.btn-auth:disabled,
+.btn-secondary:disabled,
+.btn-auth-secondary:disabled,
+.calendar-header button:disabled {
+    opacity: 0.55 !important;
+    cursor: not-allowed !important;
+    color: var(--theme-muted) !important;
+}
+
+.business-card .avatar,
+.master-item .avatar,
+.master-profile-card .avatar,
+.selected-master-avatar,
+.master-card-avatar,
+.master-editor-preview,
+.business-card .avatar img,
+.master-item .avatar img,
+.master-profile-card .avatar img,
+.selected-master-avatar img,
+.master-card-avatar img,
+.master-editor-preview img {
+    background: #f3f6f9 !important;
+    color: var(--theme-primary) !important;
+}
+
+.business-card .info .business-meta,
+.selected-master-meta span,
+.service-item .price,
+.business-card .arrow,
+.bottom-nav a.active,
+.calendar-day.selected,
+.time-slot.selected,
+.master-card.selected,
+.service-card.selected {
+    color: var(--theme-primary) !important;
+}
+
+.service-card,
+.master-card,
+.calendar-day,
+.time-slot,
+.service-item,
+.master-item,
+.booking-item,
+.stat-card,
+.tab-content,
+.service-editor,
+.master-editor,
+.calendar-card,
+.selected-master-card,
+.booking-summary,
+.modal-content,
+.auth-modal .modal-content,
+.partner-card,
+.settings-form,
+.master-profile-card,
+.business-info {
+    border-radius: 18px !important;
+}
+
+.service-card.selected,
+.master-card.selected,
+.calendar-day.selected,
+.time-slot.selected {
+    background: #eef3f7 !important;
+    border-color: rgba(15, 52, 96, 0.22) !important;
+    color: var(--theme-text) !important;
+}
+
+.calendar-day.today,
+.time-slot.booked,
+.calendar-day.disabled,
+.time-slot.booked,
+.business-card .info .code,
+.business-info .code-tag,
+.selected-master-meta span {
+    background: #f4f7fa !important;
+}
+
+.calendar-day.today {
+    border-color: rgba(15, 52, 96, 0.20) !important;
+}
+
+.calendar-day.disabled,
+.time-slot.booked {
+    color: #8b97a3 !important;
+}
+
+.calendar-day .badge,
+.modal-handle,
+.legend-dot.today,
+.legend-dot.selected,
+.legend-dot.disabled {
+    background: #dbe3ea !important;
+}
+
+.modal,
+.auth-modal {
+    background: rgba(15, 52, 96, 0.45) !important;
+}
+
+.modal-content,
+.auth-modal .modal-content {
+    border-radius: 24px !important;
+}
+
+.bottom-nav a {
+    color: var(--theme-muted) !important;
+}
+
+.business-card,
+.stat-card,
+.tab-content,
+.service-editor,
+.master-editor,
+.search-section,
+.partner-card,
+.calendar-card,
+.selected-master-card,
+.modal-content,
+.auth-modal .modal-content,
+.business-info,
+.booking-summary,
+.time-slot,
+.calendar-day,
+.service-item,
+.master-item,
+.master-profile-card,
+.settings-form,
+.empty-state,
+.no-results,
+.empty-state-card {
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease !important;
+}
+
+.business-card:hover,
+.stat-card:hover,
+.tab-content:hover,
+.service-editor:hover,
+.master-editor:hover,
+.search-section:hover,
+.partner-card:hover,
+.calendar-card:hover,
+.selected-master-card:hover,
+.business-info:hover,
+.booking-summary:hover,
+.service-item:hover,
+.master-item:hover,
+.master-profile-card:hover,
+.settings-form:hover,
+.empty-state:hover,
+.no-results:hover,
+.empty-state-card:hover,
+.time-slot:hover:not(.booked):not(.selected),
+.calendar-day:hover:not(.disabled):not(.selected) {
+    transform: translateY(-1px) !important;
+    box-shadow: var(--theme-shadow-strong) !important;
+    border-color: rgba(15, 52, 96, 0.18) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

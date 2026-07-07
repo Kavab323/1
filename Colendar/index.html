@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ЗаписьPro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+
+    <!-- ===== ШАПКА ===== -->
+    <header class="header">
+        <div class="header-placeholder"></div>
+        <div class="logo">Запись<span>Pro</span></div>
+        <div class="header-placeholder"></div>
+    </header>
+
+    <!-- ===== КОНТЕНТ ===== -->
+    <div class="container">
+        <div class="search-section">
+            <h1>🔍 Найдите специалиста</h1>
+            <p>Введите название или код бизнеса</p>
+            <div class="search-box">
+                <div class="input-wrapper">
+                    <span class="search-icon">🔎</span>
+                    <input type="text" id="searchInput" placeholder="Напр. Парикмахерская">
+                </div>
+                <button id="searchBtn">Найти</button>
+            </div>
+            <div class="search-hint">
+                или введите код: <span class="example-code" id="exampleCode">12345</span>
+            </div>
+        </div>
+
+        <div class="results" id="resultsContainer">
+            <div class="results-count" id="resultsCount"></div>
+            <div id="resultsList"></div>
+        </div>
+    </div>
+
+    <!-- ===== НИЖНЯЯ ПАНЕЛЬ ===== -->
+    <nav class="bottom-nav" id="bottomNav">
+        <a href="#" class="active" id="navSearchTab">
+            <span class="icon">🔍</span>
+            <span class="label">Поиск</span>
+        </a>
+        <a href="#" id="navChatTab">
+            <span class="icon">💬</span>
+            <span class="label">Чат</span>
+        </a>
+        <a href="#" id="navPartnerTab">
+            <span class="icon">👤</span>
+            <span class="label">Партнер</span>
+        </a>
+        <a href="#" id="navProfileTab">
+            <span class="icon">👤</span>
+            <span class="label">Профиль</span>
+        </a>
+    </nav>
+
+    <!-- ===== МОДАЛКА БИЗНЕСА ===== -->
+    <div class="modal" id="businessModal">
+        <div class="modal-content">
+            <div class="modal-handle"></div>
+            <div class="modal-header">
+                <h2 id="modalTitle">Название</h2>
+                <button class="modal-close" id="modalClose">✕</button>
+            </div>
+            <div class="business-info">
+                <div id="modalAddress" class="address">📍 Адрес</div>
+                <div id="modalPhone" class="phone">📞 Телефон</div>
+                <span id="modalCode" class="code-tag">Код: 12345</span>
+            </div>
+            <h3>💇 Услуги</h3>
+            <div class="service-list" id="modalServices"></div>
+            <h3>👨‍💼 Мастера</h3>
+            <div class="master-list" id="modalMasters"></div>
+            <button class="btn-book" id="modalBookBtn">📅 Записаться</button>
+        </div>
+    </div>
+
+    <!-- ===== МОДАЛКА АВТОРИЗАЦИИ ===== -->
+    <div class="auth-modal" id="authModal">
+        <div class="modal-content">
+            <div class="modal-handle"></div>
+            <h2 id="authTitle">Добро пожаловать!</h2>
+            <p class="subtitle" id="authSubtitle">Войдите или зарегистрируйтесь</p>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login" id="tabLogin">Вход</button>
+                <button class="auth-tab" data-tab="register" id="tabRegister">Регистрация</button>
+            </div>
+
+            <div class="auth-form active" id="formLogin">
+                <div class="form-group">
+                    <label>📧 Почта или телефон</label>
+                    <input type="text" id="loginEmail" placeholder="example@mail.ru или +7 (999) 123-45-67">
+                    <div class="error-text" id="loginError">Неверный формат</div>
+                </div>
+                <div class="form-group">
+                    <label>🔒 Пароль</label>
+                    <input type="password" id="loginPassword" placeholder="Введите пароль">
+                </div>
+                <button class="btn-auth" id="loginBtn">Войти</button>
+                <div class="auth-switch">
+                    Нет аккаунта? <a id="switchToRegister">Зарегистрироваться</a>
+                </div>
+            </div>
+
+            <div class="auth-form" id="formRegister">
+                <div class="form-group">
+                    <label>👤 Ваше имя</label>
+                    <input type="text" id="regName" placeholder="Иван Иванов">
+                </div>
+                <div class="form-group">
+                    <label>📱 Номер телефона</label>
+                    <input type="text" id="regPhone" placeholder="+7 (999) 123-45-67" maxlength="18">
+                    <div class="error-text" id="regPhoneError">Введите корректный номер</div>
+                </div>
+                <div class="form-group">
+                    <label>📧 Электронная почта</label>
+                    <input type="email" id="regEmail" placeholder="example@mail.ru">
+                    <div class="error-text" id="regEmailError">Введите корректный email</div>
+                </div>
+                <div class="form-group">
+                    <label>🔒 Пароль</label>
+                    <input type="password" id="regPassword" placeholder="Минимум 6 символов">
+                    <div class="error-text" id="regPasswordError">Пароль должен быть не менее 6 символов</div>
+                </div>
+                <button class="btn-auth" id="registerBtn">Зарегистрироваться</button>
+                <div class="auth-switch">
+                    Уже есть аккаунт? <a id="switchToLogin">Войти</a>
+                </div>
+            </div>
+
+            <button class="btn-auth-secondary" id="closeAuthModal">Закрыть</button>
+        </div>
+    </div>
+
+    <!-- ===== СТРАНИЦА ПРОФИЛЯ ===== -->
+    <div class="profile-page" id="profilePage">
+        <div class="profile-page-content">
+
+            <!-- Бургер-кнопка внутри профиля -->
+            <button class="burger-btn-inside" id="burgerBtnInside">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="burger-label">Меню</span>
+            </button>
+
+            <!-- Бургер-меню -->
+            <div class="burger-overlay" id="burgerOverlay"></div>
+            <div class="burger-menu" id="burgerMenu">
+                <div class="burger-menu-header">
+                    <div class="burger-avatar" id="burgerAvatar">👤</div>
+                    <div class="burger-name" id="burgerName">Гость</div>
+                    <button class="burger-close" id="burgerClose">✕</button>
+                </div>
+                <div class="burger-change-avatar" id="burgerChangeAvatar">Изменить аватарку</div>
+                <div class="burger-menu-divider"></div>
+                <div class="burger-menu-item" id="burgerEmailItem">
+                    <span class="icon">📧</span>
+                    <span class="text" id="burgerEmailText">email@example.com</span>
+                </div>
+                <div class="burger-menu-item" id="burgerSupport">
+                    <span class="icon">💬</span>
+                    <span class="text">Техподдержка</span>
+                </div>
+                <div class="burger-menu-divider"></div>
+                <div class="burger-menu-item logout" id="burgerLogout">
+                    <span class="icon">🚪</span>
+                    <span class="text">Выйти из профиля</span>
+                </div>
+            </div>
+
+            <!-- Шапка профиля -->
+            <div class="profile-header-block">
+                <h1 class="profile-title">Профиль</h1>
+                <div class="profile-wallet">
+                    <span>💰</span>
+                    <span>Кошелек</span>
+                    <span class="wallet-balance">0 ₽</span>
+                </div>
+            </div>
+
+            <!-- Информация о пользователе -->
+            <div class="profile-user-info">
+                <div class="profile-user-avatar" id="profileUserAvatar">👤</div>
+                <div class="profile-user-name" id="profileUserName">Гость</div>
+                <div class="profile-user-email" id="profileUserEmail">Не авторизован</div>
+            </div>
+
+            <!-- Записи -->
+            <div class="profile-section">
+                <h2 class="profile-section-title">📋 Мои записи</h2>
+                <div id="profileBookingsList"></div>
+            </div>
+
+            <!-- Способы оплаты -->
+            <div class="profile-section">
+                <h2 class="profile-section-title">💳 Способы оплаты</h2>
+                <div class="payment-methods">
+                    <div class="payment-method">💳</div>
+                    <div class="payment-method">🏦</div>
+                    <div class="payment-method">📱</div>
+                    <div class="payment-method">🪙</div>
+                    <div class="payment-method">💎</div>
+                </div>
+            </div>
+
+            <!-- Поддержка -->
+            <div class="profile-support">
+                <a href="#" id="profileSupportLink">💬 Написать в поддержку</a>
+            </div>
+
+            <!-- Кнопка выхода -->
+            <button class="profile-logout-btn" id="profileLogoutBtn">🚪 Выйти из профиля</button>
+        </div>
+    </div>
+
+    <!-- Подключаем JS -->
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
